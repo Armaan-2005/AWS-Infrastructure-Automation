@@ -9,9 +9,6 @@ stages:
   - apply
   - destroy
 
-before_script:
-  - terraform -version
-
 initializing backend:
   stage: backend
   script:
@@ -19,11 +16,15 @@ initializing backend:
     - terraform init
     - terraform apply --auto-approve -input=false
 
+before_script:
+  - terraform -version
+  - terraform init -reconfigure
+
 checking code:
   stage: validate
   script:
   - cd ..
-  - terraform init -reconfigure
+  - terraform init
   - terraform fmt
   - terraform validate
 
