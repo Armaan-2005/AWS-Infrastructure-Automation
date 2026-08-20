@@ -7,6 +7,7 @@ stages:
   - validate
   - plan
   - apply
+  - show
   - destroy
 
 before_script:
@@ -58,6 +59,11 @@ failed:
     - echo "automation failed"
   when: on_failure
 
+show jobs:
+  stage: show
+  script:
+    - terraform state list
+    
 delete code:
   stage: destroy
   script:
