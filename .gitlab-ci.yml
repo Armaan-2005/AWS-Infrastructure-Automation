@@ -9,7 +9,7 @@ stages:
   - destroy
 
 before_script:
-  -terraform -version
+  - terraform -version
   - terraform init
 
 checking code:
@@ -32,7 +32,7 @@ deploying code:
   script:
     - terraform apply --auto-aprrove "tfplan"
   dependencies:
-    - plan
+    - planning code
 
 delete code?:
   stage: destroy
