@@ -19,14 +19,6 @@ initializing backend:
     - terraform init
     - terraform apply --auto-approve -input=false
 
-exists:
-  stage: backend
-  script:
-    - terraform destroy --auto-approve -input=false
-  when: on_failure
-  dependencies:
-    - initializing backend
-
 checking code:
   stage: validate
   script:
@@ -60,6 +52,7 @@ success:
 failed:
   stage: apply
   script:
+    - terraform destroy --auto-approve -input=false
     - echo "automation failed"
   when: on_failure
 
