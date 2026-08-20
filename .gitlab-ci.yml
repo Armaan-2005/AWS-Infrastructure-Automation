@@ -9,7 +9,7 @@ stages:
   - destroy
 
 before_script:
-  -terraform -version
+  - terraform -version
   - terraform init
 
 checking code:
