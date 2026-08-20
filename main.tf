@@ -11,9 +11,6 @@ module "ec2" {
   subnet = module.vpc.pub_subnet_id
   key    = module.vpc.key_name
 }
-module "s3" {
-  source = "./modules/s3"
-}
 module "asg" {
   source    = "./modules/asg"
   arn_id    = module.alb.alb_target_arn
