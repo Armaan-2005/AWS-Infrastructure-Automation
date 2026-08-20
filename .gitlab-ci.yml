@@ -30,7 +30,7 @@ planning code:
 deploying code:
   stage: apply
   script:
-    - terraform apply --auto-aprrove "tfplan"
+    - terraform apply --auto-approve "tfplan"
   dependencies:
     - planning code
 
