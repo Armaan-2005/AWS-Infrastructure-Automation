@@ -39,6 +39,8 @@ delete code?:
   script:
     - terraform destroy --auto-approve -input=false
   when: manual
+  dependencies:
+    - deploying code
 
 after_script:
   - echo "automation completed"
