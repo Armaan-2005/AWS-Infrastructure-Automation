@@ -4,7 +4,7 @@ output "vpc_id" {
 output "sg_id" {
   value = module.vpc.sg-id
 }
-output "public-subnet" {
+output "public_subnet" {
   value = module.vpc.pub_subnet_id
 }
 output "private_subnet" {
@@ -24,4 +24,10 @@ output "alb_id" {
 }
 output "bucket_name" {
   value = module.s3.bucket-name
+}
+output "alb_name" {
+  value = module.alb.alb_name
+}
+output "asg_id" {
+  value = module.asg.asg_id
 }

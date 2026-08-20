@@ -5,6 +5,6 @@ resource "aws_instance" "ec2" {
   subnet_id = var.subnet
   vpc_security_group_ids = var.vpc-sg
   tags = {
-    Name = "module-test"
+    Name = "ec2-module-test"
   }
 }

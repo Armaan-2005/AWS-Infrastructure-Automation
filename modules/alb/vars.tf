@@ -4,3 +4,6 @@ variable "subnet" {
 variable "sg" {
   type = list(string)
 }
+variable "vpc_id" {
+  type = string 
+}

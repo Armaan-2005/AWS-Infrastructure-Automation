@@ -1,15 +1,29 @@
 resource "aws_vpc" "my_vpc" {
   cidr_block = "10.0.0.0/16"
+  tags = {
+    Name = "project_vpc"
+  }
 }
 resource "aws_subnet" "pub_subnet" {
   vpc_id = aws_vpc.my_vpc.id
   cidr_block = "10.0.1.0/24"
   availability_zone = "us-east-1a"
+  tags = {
+    Name = "Public"
+  }
 }
 resource "aws_subnet" "priv_subnet" {
   vpc_id = aws_vpc.my_vpc.id
   cidr_block = "10.0.2.0/24"
   availability_zone = "us-east-1b"
+  tags = {
+    Name = "Private"
+  }
+}
+resource "aws_subnet" "pub2_subnet" {
+  vpc_id = aws_vpc.my_vpc.id
+  cidr_block = "10.0.3.0/24"
+  availability_zone = "us-east-1c"
 }
 resource "aws_internet_gateway" "internet" {
   vpc_id = aws_vpc.my_vpc.id
@@ -23,6 +37,10 @@ resource "aws_route_table" "routetable" {
 }
 resource "aws_route_table_association" "route" {
     subnet_id = aws_subnet.pub_subnet.id
+    route_table_id = aws_route_table.routetable.id
+}
+resource "aws_route_table_association" "route2" {
+    subnet_id = aws_subnet.pub2_subnet.id
     route_table_id = aws_route_table.routetable.id
 }
 resource "aws_security_group" "my_sg" {
