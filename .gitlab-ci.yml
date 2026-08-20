@@ -3,6 +3,7 @@ image:
   entrypoint: [""]
 
 stages:
+  - backend
   - validate
   - plan
   - apply
@@ -10,11 +11,18 @@ stages:
 
 before_script:
   - terraform -version
-  - terraform init
+
+intializing backend:
+  stage: backend
+  script:
+    - cd backend
+    - terraform init
+    - terraform apply --auto-approve -input=false
 
 checking code:
   stage: validate
   script:
+  - cd ..
   - terraform fmt
   - terraform validate
 
@@ -34,7 +42,19 @@ deploying code:
   dependencies:
     - planning code
 
-delete code?:
+success:
+  stage: apply
+  script:
+    - echo "automation successfull"
+  when: on_success
+
+failed:
+  stage: apply
+  script:
+    - echo "automation failed"
+  when: on_failure
+
+delete code:
   stage: destroy
   script:
     - terraform destroy --auto-approve -input=false
