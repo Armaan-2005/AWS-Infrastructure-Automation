@@ -19,6 +19,14 @@ intializing backend:
     - terraform init
     - terraform apply --auto-approve -input=false
 
+exists:
+  stage: backend
+  script:
+    - terraform destroy --auto-approve -input=false
+  when: on_failure
+  dependencies:
+    - initializing backend
+
 checking code:
   stage: validate
   script:
