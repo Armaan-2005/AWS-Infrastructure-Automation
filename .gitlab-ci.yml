@@ -30,7 +30,7 @@ planning code:
 deploying code:
   stage: apply
   script:
-    - terraform apply --auto-approve "tfplan"
+    - terraform apply --auto-approve tfplan
   dependencies:
     - planning code
 
@@ -39,8 +39,6 @@ delete code?:
   script:
     - terraform destroy --auto-approve -input=false
   when: manual
-  dependencies:
-    - deploying code
 
 after_script:
   - echo "automation completed"
