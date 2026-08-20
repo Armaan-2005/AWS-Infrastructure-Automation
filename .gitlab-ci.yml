@@ -55,6 +55,7 @@ success:
 failed:
   stage: apply
   script:
+    - terraform init -reconfigure
     - terraform destroy --auto-approve -input=false
     - echo "automation failed"
   when: on_failure
@@ -62,6 +63,7 @@ failed:
 show jobs:
   stage: show
   script:
+    - terraform init -reconfigure
     - terraform state list
     
 delete code:
