@@ -1,0 +1,44 @@
+image:
+  name: hashicorp/terraform:latest
+  entrypoint: [""]
+
+stages:
+  - validate
+  - plan
+  - apply
+  - destroy
+
+before_script:
+  -terraform -version
+  - terraform init
+
+checking code:
+  stage: validate
+  script:
+  - terraform fmt
+  - terraform validate
+
+planning code:
+  stage: plan
+  script:
+    - terraform plan -out=tfplan
+  artifacts:
+    paths:
+      - tfplan
+    expire_in: 10 minutes
+
+deploying code:
+  stage: apply
+  script:
+    - terraform apply --auto-aprrove "tfplan"
+  dependencies:
+    - plan
+
+delete code?:
+  stage: destroy
+  script:
+    - terraform destroy --auto-approve -input=false
+  when: manual
+
+after_script:
+  - echo "automation completed"
