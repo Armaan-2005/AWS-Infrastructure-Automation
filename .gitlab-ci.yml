@@ -18,6 +18,7 @@ initializing backend:
     - cd backend
     - terraform init
     - terraform apply --auto-approve -input=false
+  when: manual
 
 checking code:
   stage: validate
@@ -60,6 +61,7 @@ failed:
 delete code:
   stage: destroy
   script:
+    - terraform init -reconfigure
     - terraform destroy --auto-approve -input=false
   when: manual
 
