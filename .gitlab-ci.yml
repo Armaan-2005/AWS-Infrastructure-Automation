@@ -12,7 +12,7 @@ stages:
 before_script:
   - terraform -version
 
-intializing backend:
+initializing backend:
   stage: backend
   script:
     - cd backend
