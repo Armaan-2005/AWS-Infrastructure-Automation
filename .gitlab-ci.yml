@@ -23,7 +23,7 @@ checking code:
   stage: validate
   script:
   - cd ..
-  - terraform init
+  - terraform init -reconfigure
   - terraform fmt
   - terraform validate
 
