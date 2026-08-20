@@ -2,4 +2,6 @@
 *.tfstate
 *.tfstate.*
 *.pem
-backend/
+**/.terraform/
+**/.tfstate.*
+**/*.tfstate.*
