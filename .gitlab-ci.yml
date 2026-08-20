@@ -11,6 +11,7 @@ stages:
 
 before_script:
   - terraform -version
+  - terraform init
 
 initializing backend:
   stage: backend
@@ -23,7 +24,6 @@ checking code:
   stage: validate
   script:
   - cd ..
-  - terraform init
   - terraform fmt
   - terraform validate
 
