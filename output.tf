@@ -22,9 +22,6 @@ output "instance_name" {
 output "alb_id" {
   value = module.alb.alb_id
 }
-output "bucket_name" {
-  value = module.s3.bucket-name
-}
 output "alb_name" {
   value = module.alb.alb_name
 }
