@@ -12,6 +12,7 @@ stages:
 
 before_script:
   - terraform -version
+  - terraform init
 
 initializing backend:
   stage: backend
@@ -24,25 +25,18 @@ initializing backend:
 checking code:
   stage: validate
   script:
-  - terraform init -reconfigure
   - terraform fmt
   - terraform validate
 
 planning code:
   stage: plan
   script:
-    - terraform init -reconfigure
-    - terraform plan -out=tfplan
-  artifacts:
-    paths:
-      - tfplan
-    expire_in: 10 minutes
+    - terraform plan
 
 deploying code:
   stage: apply
   script:
-    - terraform init -reconfigure
-    - terraform apply --auto-approve tfplan
+    - terraform apply --auto-approve
   dependencies:
     - planning code
 
@@ -55,7 +49,6 @@ success:
 failed:
   stage: apply
   script:
-    - terraform init -reconfigure
     - terraform destroy --auto-approve -input=false
     - echo "automation failed"
   when: on_failure
@@ -63,13 +56,11 @@ failed:
 show jobs:
   stage: show
   script:
-    - terraform init -reconfigure
     - terraform state list
     
 delete code:
   stage: destroy
   script:
-    - terraform init -reconfigure
     - terraform destroy --auto-approve -input=false
   when: manual
 
