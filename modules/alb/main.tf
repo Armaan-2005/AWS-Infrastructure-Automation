@@ -24,3 +24,11 @@ resource "aws_lb_target_group" "lb_target" {
     protocol = "HTTP"
   }
 }
+resource "aws_lb_target_group_attachment" "target_ec2_a"{
+  target_group_arn = aws_lb_target_group.lb_target.arn
+  target_id = var.target_1
+}
+resource "aws_lb_target_group_attachment" "target_ec2_b"{
+  target_group_arn = aws_lb_target_group.lb_target.arn
+  target_id = var.target_2
+}

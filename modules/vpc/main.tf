@@ -15,7 +15,7 @@ resource "aws_subnet" "pub_subnet" {
 resource "aws_subnet" "priv_subnet" {
   vpc_id = aws_vpc.my_vpc.id
   cidr_block = "10.0.2.0/24"
-  availability_zone = "us-east-1b"
+  availability_zone = "us-east-1a"
   tags = {
     Name = "Private"
   }
@@ -23,7 +23,7 @@ resource "aws_subnet" "priv_subnet" {
 resource "aws_subnet" "pub2_subnet" {
   vpc_id = aws_vpc.my_vpc.id
   cidr_block = "10.0.3.0/24"
-  availability_zone = "us-east-1c"
+  availability_zone = "us-east-1b"
 }
 resource "aws_internet_gateway" "internet" {
   vpc_id = aws_vpc.my_vpc.id

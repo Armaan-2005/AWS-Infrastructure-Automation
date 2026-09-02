@@ -19,6 +19,9 @@ variable "key" {
 variable "vpc-sg" {
   type = list(string)
 }
-variable "subnet" {
+variable "subnet_a" {
+  type = string
+}
+variable "subnet_b" {
   type = string
 }
