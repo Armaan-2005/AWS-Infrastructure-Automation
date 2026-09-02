@@ -62,6 +62,7 @@ failed:
 show jobs:
   stage: show
   script:
+    - terraform init
     - terraform state list
     
 delete code:
