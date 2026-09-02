@@ -21,7 +21,7 @@ initializing backend:
     - terraform apply --auto-approve -input=false
   artifacts:
     paths:
-      - capstone project/terraform.tfstate
+      - backend/terraform.tfstate
     expire_in: 1 day
 
 checking code:
