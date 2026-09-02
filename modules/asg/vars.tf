@@ -17,3 +17,6 @@ variable "arn_id" {
 variable "subnet" {
   type = list(string)
 }
+variable "target_arn" {
+  type = string
+}

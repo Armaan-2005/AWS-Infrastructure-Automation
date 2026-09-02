@@ -4,20 +4,17 @@ output "vpc_id" {
 output "sg_id" {
   value = module.vpc.sg-id
 }
-output "public_subnet" {
-  value = module.vpc.pub_subnet_id
-}
-output "private_subnet" {
-  value = module.vpc.priv_subnet_id
-}
 output "key_name" {
   value = module.vpc.key_name
 }
 output "instance_id" {
-  value = module.ec2.instance_id
+  value = [module.ec2.instance_id_a, module.ec2.instance_id_b]
 }
-output "instance_name" {
-  value = module.ec2.instance_name
+output "instance_name_1a" {
+  value = module.ec2.instance_name_a
+}
+output "instance_name_1b" {
+  value = module.ec2.instance_name_b
 }
 output "alb_id" {
   value = module.alb.alb_id
