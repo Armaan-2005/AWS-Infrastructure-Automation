@@ -19,6 +19,10 @@ initializing backend:
     - cd backend
     - terraform init
     - terraform apply --auto-approve -input=false
+  artifacts:
+    paths:
+      - capstone project/terraform.tfstate
+    expire_in: 30 minutes
   when: manual
 
 checking code:
@@ -42,7 +46,7 @@ deploying code:
   stage: apply
   script:
     - terraform init
-    - terraform apply --auto-approve
+    - terraform apply --auto-approve tfplan
   dependencies:
     - planning code
 
@@ -55,6 +59,7 @@ success:
 failed:
   stage: apply
   script:
+    - terraform init
     - terraform destroy --auto-approve -input=false
     - echo "automation failed"
   when: on_failure
@@ -73,6 +78,8 @@ delete code:
     - cd backend
     - terraform init
     - terraform destroy --auto-approve -input=false
+  dependencies:
+    - initializing backend
   when: manual
 
 after_script:
