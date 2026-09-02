@@ -31,11 +31,13 @@ checking code:
 planning code:
   stage: plan
   script:
+    - terraform init
     - terraform plan
 
 deploying code:
   stage: apply
   script:
+    - terraform init
     - terraform apply --auto-approve
   dependencies:
     - planning code
@@ -61,6 +63,7 @@ show jobs:
 delete code:
   stage: destroy
   script:
+    - terraform init
     - terraform destroy --auto-approve -input=false
   when: manual
 
