@@ -31,6 +31,8 @@ checking code:
   - terraform init
   - terraform fmt
   - terraform validate
+  dependencies:
+    - initializing backend
 
 planning code:
   stage: plan
