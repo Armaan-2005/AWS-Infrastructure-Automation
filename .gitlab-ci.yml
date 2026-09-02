@@ -71,6 +71,7 @@ delete code:
     - terraform init
     - terraform destroy --auto-approve -input=false
     - cd backend
+    - terraform init
     - terraform destroy --auto-approve -input=false
   when: manual
 
