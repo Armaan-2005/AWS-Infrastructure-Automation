@@ -54,7 +54,9 @@ success:
   script:
     - echo "automation successfull"
   when: on_success
-
+  dependencies:
+    - deploying code
+    
 failed:
   stage: apply
   script:
@@ -62,7 +64,9 @@ failed:
     - terraform destroy --auto-approve -input=false
     - echo "automation failed"
   when: on_failure
-
+  dependencies:
+    - deploying code
+    
 show jobs:
   stage: show
   script:
