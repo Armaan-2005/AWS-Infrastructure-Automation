@@ -19,7 +19,10 @@ initializing backend:
     - cd backend
     - terraform init
     - terraform apply --auto-approve -input=false
-  when: manual
+  artifacts:
+    paths:
+      - capstone project/terraform.tfstate
+    expire_in: 1 day
 
 checking code:
   stage: validate
