@@ -32,7 +32,11 @@ planning code:
   stage: plan
   script:
     - terraform init
-    - terraform plan
+    - terraform plan -out=tfplan
+  artifacts:
+    paths:
+    - tfplan
+    expire_in: 10 minutes
 
 deploying code:
   stage: apply
@@ -64,6 +68,8 @@ delete code:
   stage: destroy
   script:
     - terraform init
+    - terraform destroy --auto-approve -input=false
+    - cd backend
     - terraform destroy --auto-approve -input=false
   when: manual
 
