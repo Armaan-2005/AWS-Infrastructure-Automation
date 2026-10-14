@@ -3,20 +3,10 @@ pipeline{
     stages{
         stage("Add Backend"){
             steps{
-                bat 'cd backend'
+                dir('backend'){
                 bat 'terraform --version'
                 bat 'terraform init'
                 bat 'terraform apply -auto-approve'
-                }
-                post{
-                     always{
-                    echo "Backend Initializing"
-                }
-                success{
-                    echo "Created Successfully"
-                }
-                failure{
-                    echo "Failed"
                 }
             }
         }
@@ -51,6 +41,7 @@ pipeline{
                 bat 'terraform state list'
             }
         }
+    }
     post{
         success{
             echo "========executed successfully ========"
@@ -60,4 +51,4 @@ pipeline{
         }
     }
 }
-}
+
