@@ -3,11 +3,15 @@ pipeline{
     stages{
         stage("Add Backend"){
             steps{
+            withCredentials([
+            [$class: 'AmazonWebServicesCredentialsBinding',
+             credentialsId: 'AWS-credentials']]) {
                 dir('backend'){
                 bat 'terraform --version'
                 bat 'terraform init'
                 bat 'terraform apply -auto-approve'
                 }
+            }
             }
         }
         stage("Check GIT and TF Version"){
@@ -33,7 +37,11 @@ pipeline{
         }
         stage("Terraform execution"){
             steps{
+            withCredentials([
+            [$class: 'AmazonWebServicesCredentialsBinding',
+             credentialsId: 'AWS-credentials']]) {
                 bat 'terraform apply -auto-approve'
+            }
             }
         }
         stage("Terraform state check"){
