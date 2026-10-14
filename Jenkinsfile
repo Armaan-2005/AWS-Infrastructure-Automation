@@ -7,9 +7,9 @@ pipeline{
                 bat 'terraform --version'
                 bat 'terraform init'
                 bat 'terraform apply -auto-approve'
-            }
-            post{
-                always{
+                }
+                post{
+                     always{
                     echo "Backend Initializing"
                 }
                 success{
@@ -22,7 +22,7 @@ pipeline{
         }
         stage("Check GIT and TF Version"){
             steps{
-                bat 'git --verison'
+                bat 'git --version'
                 bat 'terraform --version'
             }
 
@@ -34,11 +34,10 @@ pipeline{
             }
 
         }
-        }
         stage("Terraform planning"){
             steps{
                 bat 'terraform validate'
-                bat 'terraform plan'
+                bat 'terraform plan -out=tfplan'
             }
 
         }
