@@ -42,12 +42,12 @@ pipeline{
 
         }
         stage("Terraform execution"){
-            step{
+            steps{
                 bat 'terraform apply -auto-approve'
             }
         }
         stage("Terraform state check"){
-            step{
+            steps{
                 bat 'terraform state list'
             }
         }
