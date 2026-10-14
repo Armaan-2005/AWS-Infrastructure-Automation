@@ -7,7 +7,6 @@
 [![Terraform](https://img.shields.io/badge/Terraform-IaC-7B42BC?logo=terraform&logoColor=white)](https://developer.hashicorp.com/terraform)
 [![AWS](https://img.shields.io/badge/AWS-Cloud-FF9900?logo=amazonaws&logoColor=white)](https://aws.amazon.com/)
 [![Jenkins](https://img.shields.io/badge/Jenkins-CI%2FCD-D24939?logo=jenkins&logoColor=white)](https://www.jenkins.io/)
-[![License](https://img.shields.io/badge/License-Add_your_license-lightgrey)](#license)
 
 [Architecture](#-architecture) · [Repository Structure](#-repository-structure) · [How It Works](#-how-the-infrastructure-works) · [Deploy](#-deployment-guide) · [Cleanup](#-clean-up-resources)
 
@@ -49,7 +48,6 @@ The infrastructure includes:
 - [Clean Up Resources](#-clean-up-resources)
 - [Troubleshooting](#-troubleshooting)
 - [Learning Outcomes](#-learning-outcomes)
-- [License](#-license)
 
 </details>
 
@@ -353,9 +351,6 @@ This project demonstrates practical experience with:
 - Organizing infrastructure into separate configuration areas/modules.
 - Automating infrastructure workflows with Jenkins.
 
-## 📄 License
-
-No license has been specified here. If you intend others to reuse or distribute this project, add a `LICENSE` file and replace this section with the chosen license.
 
 ---
 
