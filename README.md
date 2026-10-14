@@ -1,6 +1,6 @@
 <div align="center">
 
-# AWS Infrastructure Automation with Terraform
+# AWS Infrastructure Automation with Terraform & Jenkins
 
 **A modular AWS infrastructure project provisioned as Infrastructure as Code (IaC).**
 
