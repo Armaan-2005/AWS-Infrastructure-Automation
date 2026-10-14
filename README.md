@@ -97,12 +97,12 @@ The repository separates the **backend bootstrap** from the main infrastructure 
 capstone-terraform/
 ├── backend/                  # Creates the S3 bucket for Terraform state
 │   └── *.tf                  # Backend bootstrap Terraform configuration
-├── capstone/                 # Main AWS infrastructure configuration
-│   ├── *.tf                  # Provider, variables, outputs and resource wiring
-│   └── modules/
+├── modules/                  # Main AWS infrastructure configuration
+|       ├── *.tf              # Provider, variables, outputs and resource wiring
 │       ├── vpc/              # VPC and subnet/network resources
 │       ├── ec2/              # EC2-related configuration
-│       └── nginx/             # Web-server/application setup, if used
+│       └── asg/              # Auto Scaling groups for EC2
+│       └── alb/              # Application Load Balancer with Auto Scaling
 ├── Jenkinsfile               # Jenkins pipeline definition, if stored here
 └── README.md                 # Project documentation
 ```
