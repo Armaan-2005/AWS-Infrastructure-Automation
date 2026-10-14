@@ -22,10 +22,13 @@ pipeline{
         }
         stage("Terraform Initialization"){
             steps{
+                withCredentials([
+            [$class: 'AmazonWebServicesCredentialsBinding',
+             credentialsId: 'AWS_credentials']]){
                 bat 'terraform init'
                 bat 'terraform fmt'
             }
-
+            }
         }
         stage("Terraform planning"){
             steps{
