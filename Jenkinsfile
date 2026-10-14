@@ -14,9 +14,8 @@ pipeline{
             }
             }
         }
-        stage("Check GIT and TF Version"){
+        stage("Check TF Version"){
             steps{
-                bat 'git --version'
                 bat 'terraform --version'
             }
 
